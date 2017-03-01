@@ -1,0 +1,7 @@
+.cache/
+.coverage
+rcgrep/__pycache__/
+rcgrep/tests/__pycache__/
+env/
+env2/
+*.pyc

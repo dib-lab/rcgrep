@@ -29,12 +29,14 @@ def test_simple_search(testseq, filename, capfd):
     ('TTTTGTTATAGTTTTCGTGCATTA', '@seq1'),
     ('CGTATATGGAAGAAAATTCACTTT', '@seq2')
 ])
-def test_search_with_args(testseq, readname, capsys):
-    argslist = ['--query', testseq, '--grepargs', '-B 1',
+def test_search_with_args(testseq, readname, capfd):
+    argslist = ['--query', testseq, '--grepargs', '-B 1', '--verbose',
                 rcgrep.test_data_file('reads.fq.bz2')]
     args = rcgrep.cli.get_parser().parse_args(argslist)
     rcgrep.search.main(args)
-    out, err = capsys.readouterr()
+    out, err = capfd.readouterr()
+    with capfd.disabled():
+        print(err)
     assert readname in out
 
 

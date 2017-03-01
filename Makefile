@@ -12,4 +12,4 @@ style:
 	pep8 rcgrep/*.py rcgrep/tests/*.py setup.py
 
 devenv:
-	pip install --upgrade pytest pytest-cov pep8
+	pip install pytest pytest-cov pep8

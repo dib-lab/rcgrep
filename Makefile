@@ -6,7 +6,7 @@
 # ------------------------------------------------------------------------------
 
 test:
-	pytest -v --cov=rcgrep rcgrep/tests/*.py
+	py.test -v --cov=rcgrep rcgrep/tests/*.py
 
 style:
 	pep8 rcgrep/*.py rcgrep/tests/*.py setup.py

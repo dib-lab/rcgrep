@@ -9,6 +9,7 @@
 
 import pytest
 import rcgrep
+from rcgrep.search import program_by_filename
 
 
 @pytest.mark.parametrize('testseq,filename', [
@@ -35,8 +36,6 @@ def test_search_with_args(testseq, readname, capfd):
     args = rcgrep.cli.get_parser().parse_args(argslist)
     rcgrep.search.main(args)
     out, err = capfd.readouterr()
-    with capfd.disabled():
-        print(err)
     assert readname in out
 
 
@@ -49,19 +48,19 @@ def test_expressions():
 
 
 def test_program_by_filename():
-    assert rcgrep.search.program_by_filename('reads.fastq') == 'grep'
-    assert rcgrep.search.program_by_filename('reads.1.fq.gz') == 'zgrep'
-    assert rcgrep.search.program_by_filename('longreads.fa.bz2') == 'bzgrep'
-    assert rcgrep.search.program_by_filename('reads.gz.bz2.fasta') == 'grep'
+    assert program_by_filename('reads.fastq') == ['cat']
+    assert program_by_filename('reads.1.fq.gz') == ['gunzip', '-c']
+    assert program_by_filename('longreads.fa.bz2') == ['bunzip2', '-c']
+    assert program_by_filename('reads.gz.bz2.fasta') == ['cat']
 
 
-def test_verbose(capsys):
+def test_verbose(capfd):
     from sys import stderr
     argslist = ['--query', 'TTTTGTTATAGTTTTCGTGCATTA', '--verbose',
                 rcgrep.test_data_file('reads.fq.bz2')]
     args = rcgrep.cli.get_parser().parse_args(argslist)
     rcgrep.search.main(args, log=stderr)
-    out, err = capsys.readouterr()
-    assert 'bzgrep' in err
+    out, err = capfd.readouterr()
+    assert 'bunzip2 -c' in err
     assert '-e TTTTGTTATAGTTTTCGTGCATTA -e TAATGCACGAAAACTATAACAAAA' in err
     assert 'reads.fq.bz2' in err

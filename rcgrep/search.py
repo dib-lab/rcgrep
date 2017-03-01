@@ -22,10 +22,10 @@ def build_grep_expressions(query_args):
 
 def program_by_filename(file_to_search):
     if file_to_search.endswith('.gz'):
-        return 'zgrep'
+        return ['gunzip', '-c']
     elif file_to_search.endswith('.bz2'):
-        return 'bzgrep'
-    return 'grep'
+        return ['bunzip2', '-c']
+    return ['cat']
 
 
 def main(args, log=stderr):
@@ -37,14 +37,18 @@ def main(args, log=stderr):
     for file_to_search in args.file:
         program = program_by_filename(file_to_search)
 
-        command = [program] + expressions
-        if args.grepargs:
-            command += greparg_strings
-        command += [file_to_search]
+        cat_command = program + [file_to_search]
+        catproc = subprocess.Popen(cat_command,
+                                   stdout=subprocess.PIPE,
+                                   universal_newlines=True)
 
+        grep_command = ['grep'] + expressions
+        if args.grepargs:
+            grep_command += greparg_strings
         if args.verbose:
-            print(' '.join(command), file=log)
-        subprocess.call(command)
+            print(' '.join(cat_command), '|', ' '.join(grep_command), file=log)
+        grepproc = subprocess.Popen(grep_command, stdin=catproc.stdout)
+        grepproc.communicate()
 
 
 if __name__ == '__main__':  # pragma: no cover

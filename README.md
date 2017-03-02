@@ -6,7 +6,7 @@
 
 # rcgrep
 
-**rcgrep**: search text files for DNA sequences and their reverse complements
+Search text files for DNA sequences and their reverse complements!
 
 > **ME**: *I just need to search for a sequence in this file real quick. I'll use `grep`.*
 >

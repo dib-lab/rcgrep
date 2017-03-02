@@ -29,7 +29,7 @@ def program_by_filename(file_to_search):
 
 
 def main(args=None, log=stderr):
-    if args is None:
+    if args is None:  # pragma: no cover
         args = rcgrep.cli.get_parser().parse_args()
     expressions = build_grep_expressions(args.query)
 

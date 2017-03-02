@@ -5,3 +5,6 @@ rcgrep/tests/__pycache__/
 env/
 env2/
 *.pyc
+build/
+dist/
+*.egg-info/

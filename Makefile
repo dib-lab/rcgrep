@@ -13,3 +13,8 @@ style:
 
 devenv:
 	pip install --upgrade pytest pytest-cov pep8
+
+clean:
+	rm -rf .cache/ .coverage rcgrep/__pycache__/ rcgrep/tests/__pycache__/
+	rm -rf build/ dist/ *.egg-info/
+	rm -f *.pyc rcgrep/*.pyc

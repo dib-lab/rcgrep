@@ -1,5 +1,8 @@
+[![PyPI version](https://img.shields.io/pypi/v/rcgrep.svg)](https://pypi.python.org/pypi/rcgrep)
+![Supported Python versions](https://img.shields.io/pypi/pyversions/rcgrep.svg)
 [![rcgrep build status](https://img.shields.io/travis/dib-lab/rcgrep.svg)](https://travis-ci.org/dib-lab/rcgrep)
 [![Test coverage](https://img.shields.io/codecov/c/github/dib-lab/rcgrep.svg)](https://codecov.io/github/dib-lab/rcgrep)
+[![MIT licensed](https://img.shields.io/pypi/l/rcgrep.svg)](https://github.com/dib-lab/rcgrep/blob/master/LICENSE)
 
 # rcgrep
 

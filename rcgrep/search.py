@@ -28,7 +28,9 @@ def program_by_filename(file_to_search):
     return ['cat']
 
 
-def main(args, log=stderr):
+def main(args=None, log=stderr):
+    if args is None:
+        args = rcgrep.cli.get_parser().parse_args()
     expressions = build_grep_expressions(args.query)
 
     if args.grepargs:
@@ -52,4 +54,4 @@ def main(args, log=stderr):
 
 
 if __name__ == '__main__':  # pragma: no cover
-    main(rcgrep.cli.get_parser().parse_args())
+    main()

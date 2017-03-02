@@ -45,7 +45,7 @@ pytest --pyargs rcgrep.tests
 
 ## Some examples
 
-```grep
+```bash
 # Most basic example: search for a single sequence in a plain text file.
 rcgrep --query GATTACA amel.csv
 

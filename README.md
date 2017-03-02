@@ -43,6 +43,25 @@ pytest --pyargs rcgrep.tests
 ```
 
 
+## Some examples
+
+```grep
+# Most basic example: search for a single sequence in a plain text file.
+rcgrep --query GATTACA amel.csv
+
+# Search for a couple of sequences, and grab the surrounding lines.
+rcgrep --grepargs "-B 1 -A 2" --query GATTACA \
+       --query AGGACAAATAGGATTTTGGTATATGT \
+       reads.1.fq.gz reads.2.fq.gz longreads.fa.bz2
+
+# Do a case-insensitive search
+rcgrep --grepargs "-i" --query ACATTTTGACCACCGTGTGTCCGGTGACGCTA longreads.fa
+
+# Power user: pipe rcgrep together with a few other UNIX commands
+cut -f 3 data-*.tsv | rcgrep --query TTAGGG - | sort | uniq | wc -l
+```
+
+
 ## Contact
 
 This project was originally written by Daniel Standage in the [Lab for Data Intensive Biology](http://ivory.idyll.org/lab/) at UC Davis.

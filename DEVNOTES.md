@@ -37,3 +37,9 @@ The Makefile provides a few procedures for checking the code.
 - `make style` will check the Python code against the PEP8 style guide
 
 Both of these will have to pass before any changes are merged into to the master branch of the main repository.
+
+## Executing rcgrep in the dev environment
+
+When a user runs `pip install rcgrep`, a file called `rcgrep` is created and installed in the user's path (see `entry_points` in `setup.py`).
+This script does not exist in the development environment.
+If you need to run/test the `rcgrep` command directly, you can simply invoke `python rcgrep/search.py` to identical effect.

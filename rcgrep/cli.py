@@ -12,11 +12,13 @@ import rcgrep
 
 
 def get_parser():
-    d = 'search text files for DNA sequences and their reverse complements'
+    d = 'Search text files for DNA sequences and their reverse complements'
     epilog = (
-        'Example:\n\n    rcgrep --grepargs "-B 1 -A 2" --query GATTACA \\\n'
+        'Examples:\n\n    rcgrep --grepargs "-B 1 -A 2" --query GATTACA \\\n'
         '           --query AGGACAAATAGGATTTTGGTATATGT \\\n'
-        '           reads.1.fq.gz reads.2.fq.gz longreads.fa.bz2'
+        '           reads.1.fq.gz reads.2.fq.gz longreads.fa.bz2\n\n'
+        '    cut -f 3 data-*.tsv | rcgrep --query TTAGGG - | sort | uniq | '
+        'wc -l'
     )
     parser = argparse.ArgumentParser(
         description=d,

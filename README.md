@@ -47,8 +47,10 @@ pytest --pyargs rcgrep.tests
 
 This project was originally written by Daniel Standage in the [Lab for Data Intensive Biology](http://ivory.idyll.org/lab/) at UC Davis.
 If you have any questions, feedback, or suggestions, feel free to contact us via the [issue tracker](https://github.com/dib-lab/rcgrep/issues).
-Or even better, send us a pull request!
+
+Even better, send us a pull request!
 Contributions from the wider community are welcomed!
+See [DEVNOTES.md](DEVNOTES.md) for a quick start guide to development.
 
 
 ## License

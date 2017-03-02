@@ -5,15 +5,15 @@
 
 **rcgrep**: search text files for DNA sequences and their reverse complements
 
-> **ME**: *I just need to search for a sequence in this file really quickly. Use `grep`.*
+> **ME**: *I just need to search for a sequence in this file real quick. I'll use `grep`.*
 >
-> **ALSO ME**: *Ugghh, the file is bzip2-compressed. Use `bzgrep`.*
+> **ALSO ME**: *Oh, the file is bzip2-compressed. Use `bzgrep`.*
 >
-> **ME AGAIN**: *Oops, I forgot to search for the sequence's reverse complement. Try again.*
+> **ME AGAIN**: *Oops, I forgot to search for the sequence's reverse complement as well. Try again.*
 >
 > **ME, 5 MINUTES LATER**: *This time I want to search the file for 3 sequences and their reverse complements. Invoke `bzgrep` with multiple `-e` flags.*
 >
-> **ME, HEAD ON DESK**: *Dangit, `bzgrep` on Linux doesn't support multiple `-e` flags. Pipe output of `bzcat` to `grep`.*
+> **ME, HEAD ON DESK**: *Uggghh, `bzgrep` on Linux doesn't support multiple `-e` flags. Pipe output of `bzcat` to `grep`.*
 
 Like many problems in computational biology, searching for DNA sequences in text files is a very simple task that is unnecessarily complicated by a variety of technical details.
 **rcgrep** is a lightweight wrapper for the `grep` command intended to make these irrelevant details disappear as much as possible.
